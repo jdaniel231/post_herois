@@ -1,14 +1,5 @@
 <template>
   <v-container>
-    <v-alert
-      border="left"
-      color="green"
-      close-text="Close Alert"
-      dark
-      dismissible
-      v-if="this.$route.params.message"
-    > {{this.$route.params.message}} 
-    </v-alert>
     <v-row no-gutters>
       <v-col sm="10" class="mx-auto" >
         <v-card class="pa-5">
@@ -31,7 +22,7 @@
 
 <script>
 
-import API from '../api';
+import API from "../api";
 
 export default {
   data(){
@@ -57,7 +48,7 @@ export default {
       formData.append('category', this.post.category);
       formData.append('content', this.post.content); 
       if(this.$refs.form.validate()){
-        const response =  await API.addPost(formData)
+        const response =  await API.addPost(formData);
         this.$router.push({ name: "home", params: {message: response.message} });
       }
     },

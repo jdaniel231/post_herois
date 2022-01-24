@@ -10,8 +10,12 @@
                 <v-btn small outlined color="primary" > {{post.category}} </v-btn>
               </v-col>
               <v-col sm="10" class="d-flex justify-end" >
-                <v-btn color="success" text :to=" { name: 'edit-post', params: {id: post._id}}"  >Editar</v-btn>
-                <v-btn color="red" text @click="removePost(post._id)" >Excluir</v-btn>
+                <v-btn color="success" text :to=" { name: 'edit-post', params: {id: post._id}}"  >
+                  <v-icon>mdi-pen</v-icon>
+                </v-btn>
+                <v-btn color="red" text @click="removePost(post._id)" >
+                   <v-icon>mdi-delete</v-icon>
+                </v-btn>
               </v-col>
             </v-row>
           </v-card-actions>

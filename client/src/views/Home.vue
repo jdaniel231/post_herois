@@ -5,7 +5,7 @@
       color="green"
       close-text="Close Alert"
       dark
-   
+      dismissible
       v-if="this.$route.params.message"
     > {{this.$route.params.message}} 
     </v-alert>

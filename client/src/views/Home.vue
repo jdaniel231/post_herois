@@ -11,11 +11,24 @@
     </v-alert>
     <v-row no-gutters >
       <v-col sm="4" class="pa-3" v-for="post in posts" :key="post._id" >
-        <v-card class="pa-1" :to="{name: 'post', params: {id: post._id}}">
+        <v-card class="pa-1">
           <v-img height="250" :src="`/${post.image}`"></v-img>
-          <v-btn class="ml-4 mt-3" small outlined color="indigo" >
-            {{ post.category }}
-          </v-btn>
+          <v-row class="mt-1 mx-1">
+            <v-col sm="2">
+              <v-btn small outlined color="indigo" >
+                {{ post.category }}
+              </v-btn>
+            </v-col>
+            <v-col sm="10" class=" d-flex justify-end">
+              <v-btn  text icon color="blue" :to="{name: 'post', params: {id: post._id}}">
+                <v-icon>mdi-eye</v-icon>
+              </v-btn>                        
+              <!-- <v-btn color="red" text icon @click="removePost(post._id)" >
+                  <v-icon>mdi-delete</v-icon>
+              </v-btn> -->
+            </v-col>
+            
+          </v-row>          
           <v-card-title class="headline" >
             {{ post.title }}
           </v-card-title>
@@ -42,6 +55,12 @@
     async created() {
       this.posts = await API.getAllPost();
     },
+    // methods: {
+    //   async removePost(id) {
+    //     const response = await API.deletePost(id);
+    //     this.$router.push({ name: 'home', params: {message: response.message}})
+    //   }
+    // }
 
    
   };
